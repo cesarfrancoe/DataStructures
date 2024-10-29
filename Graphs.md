@@ -163,7 +163,196 @@ class Graph {
 }
 ```
 
-## **3. Ejemplos de Uso de Grafos en Casos Reales**
+## **3. Recorridos Principales de los Grafos**
+
+Los recorridos de grafos son algoritmos que permiten visitar todos los nodos de un grafo de manera sistemática. Los dos recorridos más comunes son:
+
+### **Recorrido en Amplitud (Breadth-First Search - BFS)**
+- **Descripción**: Visita todos los nodos de un nivel antes de pasar al siguiente nivel.
+- **Implementación**: Utiliza una **cola** (FIFO).
+
+**Ejemplo en Python**:
+
+```python
+from collections import deque
+
+class Graph:
+    def __init__(self):
+        self.adjacency_list = {}
+
+    def add_vertex(self, vertex):
+        if vertex not in self.adjacency_list:
+            self.adjacency_list[vertex] = []
+
+    def add_edge(self, u, v):
+        self.add_vertex(u)
+        self.add_vertex(v)
+        self.adjacency_list[u].append(v)
+        self.adjacency_list[v].append(u)
+
+    def bfs(self, start):
+        visited = set()
+        queue = deque([start])
+        while queue:
+            vertex = queue.popleft()
+            if vertex not in visited:
+                print(vertex, end=' ')
+                visited.add(vertex)
+                queue.extend(neighbor for neighbor in self.adjacency_list[vertex] if neighbor not in visited)
+
+# Uso
+g = Graph()
+g.add_edge('A', 'B')
+g.add_edge('A', 'C')
+g.add_edge('B', 'D')
+g.add_edge('C', 'E')
+print("BFS desde A:")
+g.bfs('A')
+```
+
+### **Recorrido en Profundidad (Depth-First Search - DFS)**
+- **Descripción**: Explora tan profundo como sea posible a lo largo de cada rama antes de retroceder.
+- **Implementación**: Utiliza una **pila** (LIFO) o recursión.
+
+**Ejemplo en Python**:
+
+```python
+class Graph:
+    def __init__(self):
+        self.adjacency_list = {}
+
+    def add_vertex(self, vertex):
+        if vertex not in self.adjacency_list:
+            self.adjacency_list[vertex] = []
+
+    def add_edge(self, u, v):
+        self.add_vertex(u)
+
+
+        self.add_vertex(v)
+        self.adjacency_list[u].append(v)
+        self.adjacency_list[v].append(u)
+
+    def dfs(self, vertex, visited=None):
+        if visited is None:
+            visited = set()
+        visited.add(vertex)
+        print(vertex, end=' ')
+        for neighbor in self.adjacency_list[vertex]:
+            if neighbor not in visited:
+                self.dfs(neighbor, visited)
+
+# Uso
+g = Graph()
+g.add_edge('A', 'B')
+g.add_edge('A', 'C')
+g.add_edge('B', 'D')
+g.add_edge('C', 'E')
+print("\nDFS desde A:")
+g.dfs('A')
+```
+
+### **Implementación en Java**
+
+#### **Recorrido en Amplitud (BFS)**
+
+```java
+import java.util.*;
+
+class Graph {
+    private Map<String, List<String>> adjacencyList;
+
+    public Graph() {
+        adjacencyList = new HashMap<>();
+    }
+
+    public void addVertex(String vertex) {
+        adjacencyList.putIfAbsent(vertex, new ArrayList<>());
+    }
+
+    public void addEdge(String u, String v) {
+        addVertex(u);
+        addVertex(v);
+        adjacencyList.get(u).add(v);
+        adjacencyList.get(v).add(u);
+    }
+
+    public void bfs(String start) {
+        var visited = new HashSet<String>();
+        var queue = new LinkedList<String>();
+        queue.add(start);
+        
+        while (!queue.isEmpty()) {
+            var vertex = queue.poll();
+            if (!visited.contains(vertex)) {
+                System.out.print(vertex + " ");
+                visited.add(vertex);
+                queue.addAll(adjacencyList.get(vertex));
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+        var g = new Graph();
+        g.addEdge("A", "B");
+        g.addEdge("A", "C");
+        g.addEdge("B", "D");
+        g.addEdge("C", "E");
+        System.out.print("BFS desde A: ");
+        g.bfs("A");
+    }
+}
+```
+
+#### **Recorrido en Profundidad (DFS)**
+
+```java
+import java.util.*;
+
+class Graph {
+    private Map<String, List<String>> adjacencyList;
+
+    public Graph() {
+        adjacencyList = new HashMap<>();
+    }
+
+    public void addVertex(String vertex) {
+        adjacencyList.putIfAbsent(vertex, new ArrayList<>());
+    }
+
+    public void addEdge(String u, String v) {
+        addVertex(u);
+        addVertex(v);
+        adjacencyList.get(u).add(v);
+        adjacencyList.get(v).add(u);
+    }
+
+    public void dfs(String vertex, Set<String> visited) {
+        if (visited == null) {
+            visited = new HashSet<>();
+        }
+        visited.add(vertex);
+        System.out.print(vertex + " ");
+        for (var neighbor : adjacencyList.get(vertex)) {
+            if (!visited.contains(neighbor)) {
+                dfs(neighbor, visited);
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+        var g = new Graph();
+        g.addEdge("A", "B");
+        g.addEdge("A", "C");
+        g.addEdge("B", "D");
+        g.addEdge("C", "E");
+        System.out.print("\nDFS desde A: ");
+        g.dfs("A", null);
+    }
+}
+```
+
+## **4. Ejemplos de Uso de Grafos en Casos Reales**
 
 ### **Ejemplo 1: Redes Sociales**
 Las redes sociales utilizan grafos para representar las conexiones entre usuarios. Cada usuario es un vértice y cada amistad o relación es una arista. 
@@ -190,9 +379,13 @@ Las plataformas de streaming y comercio electrónico utilizan grafos para ofrece
 - Los algoritmos de grafos permiten identificar patrones de comportamiento entre usuarios y productos, lo que ayuda a generar recomendaciones más precisas y relevantes. Esto no solo mejora la experiencia del usuario, sino que también aumenta la retención de clientes.
 
 ### **Ejemplo 5: Planificación de Rutas en Drones**
-En la entrega de paquetes mediante drones, los grafos se utilizan para planificar rutas eficientes. Los puntos de entrega son vértices y las posibles trayectorias entre ellos
-
- son aristas.
+En la entrega de paquetes mediante drones, los grafos se utilizan para planificar rutas eficientes. Los puntos de entrega son vértices y las posibles trayectorias entre ellos son aristas.
 
 **Importancia:**
 - La optimización de rutas en un grafo permite que los drones minimicen el tiempo de entrega y el consumo de energía. Utilizando algoritmos como el de A*, se pueden calcular las rutas más rápidas y seguras, mejorando así la eficiencia del servicio de entrega.
+
+### **Ejemplo 6: Análisis de Redes Biológicas**
+En biología, los grafos se utilizan para modelar interacciones entre proteínas, genes y otros componentes biológicos. Los elementos biológicos son vértices y las interacciones son aristas.
+
+**Importancia:**
+- El análisis de grafos permite identificar caminos críticos y redes de interacción, lo que ayuda a entender mejor los procesos biológicos y a desarrollar tratamientos médicos más efectivos. Herramientas como la teoría de grafos son fundamentales en la investigación biomédica.
