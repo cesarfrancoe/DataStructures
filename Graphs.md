@@ -82,7 +82,7 @@ g.add_edge('B', 'C')  # Add edge between vertex B and C
 g.display()  # Display the adjacency list
 ```
 
-### **Implementación en Java (Usando Declaración Implícita)**
+### **Implementación en Java**
 
 #### **Matrices de Adyacencia**
 
