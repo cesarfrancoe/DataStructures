@@ -16,7 +16,7 @@ El algoritmo de Dijkstra es un método utilizado para encontrar la ruta más cor
 4. **Repetir**:
    - Repetir el proceso hasta que todos los vértices hayan sido visitados o se haya alcanzado el vértice destino.
 
-#### **Ejemplo en Python**:
+### **Ejemplo en Python con Listas de Adyacencia**:
 
 ```python
 import heapq
@@ -66,7 +66,7 @@ g.add_edge('C', 'D', 1)
 print("Distancias desde A:", g.dijkstra('A'))
 ```
 
-#### **Ejemplo en Java**:
+### **Ejemplo en Java con Listas de Adyacencia**:
 
 ```java
 import java.util.*;
@@ -150,6 +150,131 @@ class Pair<K, V> {
 
     public V getValue() {
         return value;
+    }
+}
+```
+
+### **Ejemplo en Python con Matrices de Adyacencia**:
+
+```python
+class Graph:
+    def __init__(self, num_vertices):
+        self.num_vertices = num_vertices
+        self.adjacency_matrix = [[float('inf')] * num_vertices for _ in range(num_vertices)]
+
+        for i in range(num_vertices):
+            self.adjacency_matrix[i][i] = 0  # La distancia a sí mismo es 0
+
+    def add_edge(self, u, v, weight):
+        self.adjacency_matrix[u][v] = weight
+        self.adjacency_matrix[v][u] = weight  # Para un grafo no dirigido
+
+    def dijkstra(self, start):
+        visited = [False] * self.num_vertices
+        distances = [float('inf')] * self.num_vertices
+        distances[start] = 0
+
+        for _ in range(self.num_vertices):
+            # Encontrar el vértice con la distancia mínima
+            min_distance = float('inf')
+            min_index = 0
+            for v in range(self.num_vertices):
+                if distances[v] < min_distance and not visited[v]:
+                    min_distance = distances[v]
+                    min_index = v
+
+            visited[min_index] = True
+
+            # Actualizar las distancias de los vecinos
+            for v in range(self.num_vertices):
+                if (self.adjacency_matrix[min_index][v] != float('inf') and
+                        not visited[v] and
+                        distances[min_index] + self.adjacency_matrix[min_index][v] < distances[v]):
+                    distances[v] = distances[min_index] + self.adjacency_matrix[min_index][v]
+
+        return distances
+
+# Uso
+g = Graph(4)
+g.add_edge(0, 1, 1)
+g.add_edge(0, 2, 4)
+g.add_edge(1, 2, 2)
+g.add_edge(1, 3, 5)
+g.add_edge(2, 3, 1)
+
+print("Distancias desde el vértice 0:", g.dijkstra(0))
+```
+
+### **Ejemplo en Java con Matrices de Adyacencia**:
+
+```java
+class Graph {
+    private int[][] adjacencyMatrix;
+    private int numVertices;
+
+    public Graph(int numVertices) {
+        this.numVertices = numVertices;
+        adjacencyMatrix = new int[numVertices][numVertices];
+
+        for (int i = 0; i < numVertices; i++) {
+            for (int j = 0; j < numVertices; j++) {
+                adjacencyMatrix[i][j] = Integer.MAX_VALUE; // Inicializar como infinito
+            }
+            adjacencyMatrix[i][i] = 0; // La distancia a sí mismo es 0
+        }
+    }
+
+    public void addEdge(int u, int v, int weight) {
+        adjacencyMatrix[u][v] = weight;
+        adjacencyMatrix[v][u] = weight; // Para un grafo no dirigido
+    }
+
+    public int[] dijkstra(int start) {
+        var visited = new boolean[numVertices];
+        var distances = new int[numVertices];
+
+        for (int i = 0; i < numVertices; i++) {
+            distances[i] = Integer.MAX_VALUE; // Inicializar distancias
+        }
+        distances[start] = 0;
+
+        for (int count = 0; count < numVertices - 1; count++) {
+            int minDistance = Integer.MAX_VALUE;
+            int minIndex = -1;
+
+            // Encontrar el vértice con la distancia mínima
+            for (int v = 0; v < numVertices; v++) {
+                if (!visited[v] && distances[v] <= minDistance
+
+) {
+                    minDistance = distances[v];
+                    minIndex = v;
+                }
+            }
+
+            visited[minIndex] = true;
+
+            // Actualizar distancias de los vecinos
+            for (int v = 0; v < numVertices; v++) {
+                if (!visited[v] && adjacencyMatrix[minIndex][v] != Integer.MAX_VALUE &&
+                        distances[minIndex] + adjacencyMatrix[minIndex][v] < distances[v]) {
+                    distances[v] = distances[minIndex] + adjacencyMatrix[minIndex][v];
+                }
+            }
+        }
+
+        return distances;
+    }
+
+    public static void main(String[] args) {
+        var g = new Graph(4);
+        g.addEdge(0, 1, 1);
+        g.addEdge(0, 2, 4);
+        g.addEdge(1, 2, 2);
+        g.addEdge(1, 3, 5);
+        g.addEdge(2, 3, 1);
+
+        System.out.println("Distancias desde el vértice 0: " + Arrays.toString(g.dijkstra(0)));
     }
 }
 ```
