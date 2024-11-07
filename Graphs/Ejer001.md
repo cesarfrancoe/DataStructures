@@ -4,15 +4,18 @@
 Eres parte de un equipo de análisis de tráfico aéreo en Colombia y se te ha encomendado la tarea de optimizar las rutas aéreas entre los aeropuertos más importantes del país. Debes desarrollar una solución que permita a los pasajeros encontrar las mejores rutas entre dos aeropuertos en términos de distancia y costo.
 
 **Aeropuertos a Considerar:**
-- Bogotá (El Dorado)
-- Medellín (Olaya Herrera)
-- Rionegro (José María Córdova)
-- Chachagüí (Antonio Nariño)
-- Manizales (La Nubia)
-- Pereira (Matecaña)
-- San Andrés (Gustavo Rojas Pinilla)
-- Santa Marta (Simón Bolívar)
-- Cartagena (Rafael Núñez)
+
+| Nombre                     | Ciudad de Referencia | Ciudad de Ubicación | Código IATA |
+|---------------------------|----------------------|---------------------|-------------|
+| El Dorado                 | Bogotá               | Bogotá              | BOG         |
+| Olaya Herrera             | Medellín             | Medellín            | MDE         |
+| Rafael Núñez             | Cartagena            | Cartagena           | CTG         |
+| Antonio Nariño            | Pasto                | Chachagüí           | NQU         |
+| La Nubia                  | Manizales            | Manizales           | MZL         |
+| Matecaña                  | Pereira              | Pereira             | PEI         |
+| Simón Bolívar             | Santa Marta          | Santa Marta         | SMR         |
+| Gustavo Rojas Pinilla     | San Andrés           | San Andrés          | ADZ         |
+| José María Córdova        | Rionegro             | Rionegro            | MDE         |
 
 **Entradas del Problema:**
 1. Una lista de conexiones de vuelos entre los aeropuertos, donde cada conexión tiene una distancia y un costo asociado.
@@ -47,3 +50,4 @@ Ruta de menor costo: Bogotá -> Pereira -> San Andrés
 Costo total: $200.000
 
 Costo más alto del día 2024-11-15 entre 8 a.m. y 6 p.m.: $500.000
+```
