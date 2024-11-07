@@ -5,7 +5,7 @@ Eres parte de un equipo de análisis de tráfico aéreo en Colombia y se te ha e
 
 **Aeropuertos a Considerar:**
 - Bogotá (El Dorado)
-- Medellín (José María Córdova)
+- Medellín (Olaya Herrera)
 - Rionegro (José María Córdova)
 - Chachagüí (Antonio Nariño)
 - Manizales (La Nubia)
