@@ -7,7 +7,7 @@ Eres parte de un equipo de análisis de tráfico aéreo en Colombia y se te ha e
 - Bogotá (El Dorado)
 - Medellín (José María Córdova)
 - Rionegro (José María Córdova)
-- Chachagüí (Nariño)
+- Chachagüí (Antonio Nariño)
 - Manizales (La Nubia)
 - Pereira (Matecaña)
 - San Andrés (Gustavo Rojas Pinilla)
