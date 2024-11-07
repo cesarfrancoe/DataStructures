@@ -13,7 +13,6 @@ Eres parte de un equipo de análisis de tráfico aéreo en Colombia y se te ha e
 - San Andrés (Gustavo Rojas Pinilla)
 - Santa Marta (Simón Bolívar)
 - Cartagena (Rafael Núñez)
-- Tolú
 
 **Entradas del Problema:**
 1. Una lista de conexiones de vuelos entre los aeropuertos, donde cada conexión tiene una distancia y un costo asociado.
