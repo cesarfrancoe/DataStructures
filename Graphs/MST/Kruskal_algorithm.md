@@ -20,7 +20,10 @@ El algoritmo de Kruskal es especialmente eficiente en grafos dispersos, donde el
 4. **Repetir**:
    - Este proceso continúa hasta que se han añadido \( V-1 \) aristas, donde \( V \) es el número de vértices en el grafo.
 
-## **Simulador:**
+### **Explicación:**
+https://www.youtube.com/watch?v=OZKuWP1KxdY
+
+### **Simulador:**
 https://www.cs.usfca.edu/~galles/visualization/Kruskal.html
 
 ### **Ejemplo en Python con Listas de Adyacencia**:
