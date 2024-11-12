@@ -17,6 +17,9 @@ El algoritmo de Boruvka es particularmente útil para grafos densos y es conside
 
 4. **Repetir**:
    - Este proceso se repite hasta que todos los vértices están en un único componente, lo que forma el árbol de expansión mínimo.
+  
+### **Explicación:**
+https://www.youtube.com/watch?v=pl1c_P88VZM
 
 ### **Ejemplo en Python con Listas de Adyacencia**:
 
