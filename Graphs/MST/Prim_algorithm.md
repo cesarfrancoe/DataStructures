@@ -19,7 +19,11 @@ Este algoritmo es muy útil en problemas de redes, como la planificación de red
 4. **Repetir**:
    - Este proceso se repite hasta que todos los vértices estén conectados.
 
-### **Demo**
+### **Explicación:**
+
+https://www.youtube.com/watch?v=6pPSPYUbTlw
+
+### **Simulador:**
 
 https://www.cs.usfca.edu/~galles/visualization/Prim.html
 
