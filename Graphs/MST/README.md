@@ -6,9 +6,9 @@ Un **árbol de expansión mínimo** (MST, por sus siglas en inglés) es un subco
 
 ### Algoritmos para encontrar árboles de expansión mínimos
 
-- **[Algoritmo de Prim](https://github.com/cesarfrancoe/DataStructures/blob/main/Graphs/Prim_algorithm.md)**
-- **[Algoritmo de Boruvka](https://github.com/cesarfrancoe/DataStructures/blob/main/Graphs/Boruvka_algorithm.md)**
-- **[Algoritmo de Kruskal](https://github.com/cesarfrancoe/DataStructures/blob/main/Graphs/Kruskal_algorithm.md)**
+- **[Algoritmo de Prim](https://github.com/cesarfrancoe/DataStructures/blob/main/Graphs/MST/Prim_algorithm.md)**
+- **[Algoritmo de Boruvka](https://github.com/cesarfrancoe/DataStructures/blob/main/Graphs/MST/Boruvka_algorithm.md)**
+- **[Algoritmo de Kruskal](https://github.com/cesarfrancoe/DataStructures/blob/main/Graphs/MST/Kruskal_algorithm.md)**
 - **[Algoritmo de Edmonds-Karp](https://github.com/cesarfrancoe/DataStructures/blob/main/Graphs/MST/Edmon_Karp_Algorithm.md)**
 
 ### **Comparación de Algoritmos de Árboles de Expansión Mínimos**
