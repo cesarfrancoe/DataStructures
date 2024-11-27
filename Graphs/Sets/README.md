@@ -255,3 +255,181 @@ Los **conjuntos** permiten una variedad de operaciones que se utilizan para mani
    conjuntoA.clear();  // set is now empty
    ```
 
+---
+
+### **Conjuntos Ordenados**
+
+Los **conjuntos ordenados** son una variante de los conjuntos tradicionales en los que, además de garantizar que los elementos sean únicos (como en los conjuntos estándar), los elementos también mantienen un **orden específico**. Este orden puede ser ascendente o descendente, y se asegura que los elementos se mantengan en ese orden a lo largo del tiempo.
+
+En muchas implementaciones de conjuntos, el orden no está garantizado. Sin embargo, en los **conjuntos ordenados**, el orden de los elementos se puede determinar al momento de la creación, lo que permite realizar búsquedas y comparaciones más eficientes en algunos casos.
+
+### **Características de los Conjuntos Ordenados**:
+- **Elementos Únicos**: Al igual que los conjuntos tradicionales, los conjuntos ordenados no permiten elementos duplicados.
+- **Orden Específico**: Los elementos se almacenan de acuerdo con un criterio de orden (usualmente ascendente).
+- **Operaciones**: Los conjuntos ordenados permiten realizar operaciones como búsqueda, inserción y eliminación, pero manteniendo el orden de los elementos.
+
+### **Implementación de Conjuntos Ordenados**
+
+Los conjuntos ordenados pueden implementarse de diversas maneras en los lenguajes de programación. A continuación, se describen dos de las implementaciones más comunes:
+
+1. **Conjunto Ordenado en Python: `sorted()` y `set`**
+   
+   En Python, un conjunto ordenado no está implementado de forma nativa, pero se puede simular utilizando el tipo `set` y luego ordenando el conjunto con la función `sorted()`.
+
+2. **Conjunto Ordenado en Java: `TreeSet`**
+
+   En Java, los conjuntos ordenados están implementados de forma nativa a través de la clase `TreeSet`, que utiliza un árbol de búsqueda binaria (normalmente un árbol rojo-negro) para mantener el orden de los elementos.
+
+### **Operaciones Comunes con Conjuntos Ordenados**
+
+#### **1. Crear un Conjunto Ordenado**
+
+- **En Python**:
+  Python no tiene un tipo de conjunto ordenado directo, pero podemos usar `sorted()` sobre un conjunto para obtener una lista ordenada de los elementos.
+
+  **Ejemplo**:
+  ```python
+  conjunto_a = {5, 3, 9, 1, 4}
+  conjunto_ordenado = sorted(conjunto_a)  # [1, 3, 4, 5, 9]
+  ```
+
+- **En Java**:
+  En Java, se puede usar la clase `TreeSet`, que mantiene los elementos ordenados automáticamente.
+
+  **Ejemplo**:
+  ```java
+  import java.util.*;
+
+  public class ConjuntoOrdenado {
+      public static void main(String[] args) {
+          Set<Integer> conjuntoOrdenado = new TreeSet<>();
+          conjuntoOrdenado.add(5);
+          conjuntoOrdenado.add(3);
+          conjuntoOrdenado.add(9);
+          conjuntoOrdenado.add(1);
+          conjuntoOrdenado.add(4);
+
+          System.out.println(conjuntoOrdenado);  // [1, 3, 4, 5, 9]
+      }
+  }
+  ```
+
+#### **2. Operación de Unión en Conjuntos Ordenados**
+
+La **unión** de dos conjuntos ordenados produce un conjunto ordenado que contiene todos los elementos de ambos conjuntos.
+
+- **En Python**:
+  Aunque no tenemos un tipo de conjunto ordenado directo en Python, podemos realizar la unión de dos conjuntos y luego ordenarlos.
+
+  **Ejemplo**:
+  ```python
+  conjunto_a = {1, 2, 3}
+  conjunto_b = {2, 3, 4}
+  union_conjuntos = sorted(conjunto_a | conjunto_b)  # [1, 2, 3, 4]
+  ```
+
+- **En Java**:
+  Usamos el método `addAll` para combinar dos `TreeSet`s y obtener un conjunto ordenado resultante.
+
+  **Ejemplo**:
+  ```java
+  import java.util.*;
+
+  public class UnionConjuntoOrdenado {
+      public static void main(String[] args) {
+          Set<Integer> conjuntoA = new TreeSet<>(Arrays.asList(1, 2, 3));
+          Set<Integer> conjuntoB = new TreeSet<>(Arrays.asList(2, 3, 4));
+
+          conjuntoA.addAll(conjuntoB);
+          System.out.println(conjuntoA);  // [1, 2, 3, 4]
+      }
+  }
+  ```
+
+#### **3. Operación de Intersección en Conjuntos Ordenados**
+
+La **intersección** de dos conjuntos ordenados produce un nuevo conjunto que contiene solo los elementos comunes entre ambos, manteniendo el orden.
+
+- **En Python**:
+  La intersección puede hacerse con el operador `&` y luego ordenar el resultado.
+
+  **Ejemplo**:
+  ```python
+  conjunto_a = {1, 2, 3, 4}
+  conjunto_b = {3, 4, 5, 6}
+  interseccion = sorted(conjunto_a & conjunto_b)  # [3, 4]
+  ```
+
+- **En Java**:
+  En Java, la intersección se puede realizar con el método `retainAll` y los elementos siguen siendo ordenados.
+
+  **Ejemplo**:
+  ```java
+  import java.util.*;
+
+  public class InterseccionConjuntoOrdenado {
+      public static void main(String[] args) {
+          Set<Integer> conjuntoA = new TreeSet<>(Arrays.asList(1, 2, 3, 4));
+          Set<Integer> conjuntoB = new TreeSet<>(Arrays.asList(3, 4, 5, 6));
+
+          conjuntoA.retainAll(conjuntoB);
+          System.out.println(conjuntoA);  // [3, 4]
+      }
+  }
+  ```
+
+#### **4. Eliminar un Elemento en un Conjunto Ordenado**
+
+- **En Python**:
+  Podemos eliminar un elemento de un conjunto utilizando el método `remove()` después de convertir el conjunto en una lista ordenada.
+
+  **Ejemplo**:
+  ```python
+  conjunto_a = {1, 2, 3, 4}
+  conjunto_a = sorted(conjunto_a)
+  conjunto_a.remove(3)
+  print(conjunto_a)  # [1, 2, 4]
+  ```
+
+- **En Java**:
+  En un `TreeSet`, podemos usar el método `remove()` para eliminar un elemento.
+
+  **Ejemplo**:
+  ```java
+  import java.util.*;
+
+  public class EliminarElemento {
+      public static void main(String[] args) {
+          Set<Integer> conjuntoA = new TreeSet<>(Arrays.asList(1, 2, 3, 4));
+          conjuntoA.remove(3);
+          System.out.println(conjuntoA);  // [1, 2, 4]
+      }
+  }
+  ```
+
+#### **5. Verificar si un Conjunto es Ordenado**
+
+- **En Python**:
+  Aunque no hay un tipo de conjunto ordenado nativo, si se tiene una lista ordenada, se puede verificar si los elementos están ordenados utilizando `sorted()`.
+
+  **Ejemplo**:
+  ```python
+  conjunto_a = {1, 2, 3, 4}
+  ordenado = sorted(conjunto_a) == list(conjunto_a)
+  print(ordenado)  # True
+  ```
+
+- **En Java**:
+  Si utilizas un `TreeSet`, siempre puedes estar seguro de que el conjunto está ordenado.
+
+  **Ejemplo**:
+  ```java
+  import java.util.*;
+
+  public class VerificarOrdenado {
+      public static void main(String[] args) {
+          Set<Integer> conjuntoA = new TreeSet<>(Arrays.asList(1, 2, 3, 4));
+          System.out.println(conjuntoA);  // Siempre estará ordenado: [1, 2, 3, 4]
+      }
+  }
+  ```
