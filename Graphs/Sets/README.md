@@ -1,4 +1,4 @@
-## **Conjuntos y Diccionarios**
+## **Conjuntos**
 
 ### **Introducción**
 
