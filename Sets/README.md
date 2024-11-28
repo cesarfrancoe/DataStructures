@@ -1,4 +1,4 @@
-## **Conjuntos**
+## **Conjuntos (Sets)**
 
 ### **Introducción**
 
