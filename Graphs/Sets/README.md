@@ -98,9 +98,6 @@ public class ConjuntoEjemplo {
     }
 }
 ```
-Aquí tienes el subtema **Operaciones con Conjuntos** para el tema **Conjuntos y Diccionarios**:
-
----
 
 ### **Operaciones con Conjuntos**
 
