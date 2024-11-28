@@ -302,4 +302,190 @@ Los diccionarios permiten realizar diversas operaciones básicas que se utilizan
       }
   }
   ```
+Aquí tienes el subtema **"Iteraciones y Colisiones"** en diccionarios:
 
+---
+
+## **Iteraciones y Colisiones en Diccionarios**
+
+### **Iteraciones en Diccionarios**
+
+Las iteraciones en diccionarios son fundamentales para recorrer sus elementos (pares clave-valor) y realizar operaciones sobre ellos. Dependiendo del lenguaje de programación, los diccionarios ofrecen formas eficientes de recorrer sus claves, valores o ambos simultáneamente.
+
+#### **En Python**:
+En Python, los diccionarios permiten iterar a través de las claves, los valores o los pares clave-valor utilizando bucles como `for`.
+
+**Ejemplos en Python**:
+
+1. **Iteración sobre las claves**:
+   ```python
+   dictionary = {'key1': 'value1', 'key2': 'value2', 'key3': 'value3'}
+   
+   # Iterar sobre las claves
+   for key in dictionary:
+       print(key)
+   # Salida:
+   # key1
+   # key2
+   # key3
+   ```
+
+2. **Iteración sobre los valores**:
+   ```python
+   dictionary = {'key1': 'value1', 'key2': 'value2', 'key3': 'value3'}
+   
+   # Iterar sobre los valores
+   for value in dictionary.values():
+       print(value)
+   # Salida:
+   # value1
+   # value2
+   # value3
+   ```
+
+3. **Iteración sobre los pares clave-valor**:
+   ```python
+   dictionary = {'key1': 'value1', 'key2': 'value2', 'key3': 'value3'}
+   
+   # Iterar sobre los pares clave-valor
+   for key, value in dictionary.items():
+       print(f'{key}: {value}')
+   # Salida:
+   # key1: value1
+   # key2: value2
+   # key3: value3
+   ```
+
+#### **En Java**:
+En Java, las iteraciones sobre los diccionarios (específicamente sobre `HashMap`) se pueden hacer utilizando métodos como `keySet()`, `values()` y `entrySet()`. La interfaz `Map` proporciona diversas formas de recorrer las claves, los valores y los pares clave-valor.
+
+**Ejemplos en Java**:
+
+1. **Iteración sobre las claves**:
+   ```java
+   import java.util.HashMap;
+   import java.util.Set;
+
+   public class IterateKeys {
+       public static void main(String[] args) {
+           HashMap<String, String> dictionary = new HashMap<>();
+           dictionary.put("key1", "value1");
+           dictionary.put("key2", "value2");
+           dictionary.put("key3", "value3");
+   
+           // Iterar sobre las claves
+           Set<String> keys = dictionary.keySet();
+           for (String key : keys) {
+               System.out.println(key);
+           }
+           // Salida:
+           // key1
+           // key2
+           // key3
+       }
+   }
+   ```
+
+2. **Iteración sobre los valores**:
+   ```java
+   import java.util.HashMap;
+   import java.util.Collection;
+
+   public class IterateValues {
+       public static void main(String[] args) {
+           HashMap<String, String> dictionary = new HashMap<>();
+           dictionary.put("key1", "value1");
+           dictionary.put("key2", "value2");
+           dictionary.put("key3", "value3");
+   
+           // Iterar sobre los valores
+           Collection<String> values = dictionary.values();
+           for (String value : values) {
+               System.out.println(value);
+           }
+           // Salida:
+           // value1
+           // value2
+           // value3
+       }
+   }
+   ```
+
+3. **Iteración sobre los pares clave-valor**:
+   ```java
+   import java.util.HashMap;
+   import java.util.Map;
+
+   public class IterateKeyValuePairs {
+       public static void main(String[] args) {
+           HashMap<String, String> dictionary = new HashMap<>();
+           dictionary.put("key1", "value1");
+           dictionary.put("key2", "value2");
+           dictionary.put("key3", "value3");
+   
+           // Iterar sobre los pares clave-valor
+           for (Map.Entry<String, String> entry : dictionary.entrySet()) {
+               System.out.println(entry.getKey() + ": " + entry.getValue());
+           }
+           // Salida:
+           // key1: value1
+           // key2: value2
+           // key3: value3
+       }
+   }
+   ```
+
+---
+
+### **Colisiones en Diccionarios**
+
+Las **colisiones** ocurren en estructuras de diccionarios cuando dos claves diferentes generan el mismo valor de índice o "hash". En otras palabras, dos claves diferentes se mapean al mismo espacio de almacenamiento en la tabla hash interna del diccionario. Esto puede afectar el rendimiento del diccionario si no se maneja adecuadamente.
+
+#### **¿Por qué ocurren las colisiones?**
+
+Las colisiones ocurren porque las funciones de hash que se utilizan para generar un índice en la tabla interna de los diccionarios no son perfectas. Diferentes claves pueden producir el mismo índice de hash, lo que provoca que se "colisionen" en ese espacio de almacenamiento.
+
+#### **Manejo de Colisiones**
+
+Existen diferentes técnicas para manejar colisiones en diccionarios implementados con tablas hash. Las dos más comunes son:
+
+1. **Encadenamiento (Chaining)**:
+   - Consiste en almacenar múltiples pares clave-valor en la misma posición de la tabla hash utilizando una estructura secundaria como una lista enlazada o una lista de elementos.
+   - **Ventaja**: No hay límite en el número de elementos que pueden tener la misma posición de hash.
+   - **Desventaja**: Puede haber una mayor sobrecarga en la gestión de las listas enlazadas, y el rendimiento puede verse afectado si la lista se vuelve muy larga.
+
+2. **Dirección Abierta (Open Addressing)**:
+   - Consiste en buscar otra posición disponible en la tabla cuando ocurre una colisión, utilizando un algoritmo de resolución de colisiones como **lineal**, **cuadrática** o **doble hash**.
+   - **Ventaja**: No requiere estructuras secundarias.
+   - **Desventaja**: La búsqueda de posiciones libres puede volverse más costosa cuando la tabla se llena.
+
+#### **Ejemplo de Colisiones en Python (Usando `dict`)**:
+Aunque Python maneja las colisiones internamente, podemos entender cómo pueden ocurrir si analizamos cómo se distribuyen los índices de las claves en la tabla hash interna.
+
+```python
+# Las colisiones pueden ocurrir si diferentes claves producen el mismo hash.
+# Ejemplo de dos cadenas diferentes que tienen el mismo hash:
+dictionary = {}
+dictionary["key1"] = "value1"
+dictionary["key2"] = "value2"  # Aunque las claves son diferentes, pueden colisionar en la misma posición.
+
+# Python maneja esto internamente utilizando encadenamiento.
+```
+
+#### **Ejemplo de Colisiones en Java (Usando `HashMap`)**:
+En Java, `HashMap` también maneja las colisiones internamente mediante encadenamiento o dirección abierta dependiendo de la implementación.
+
+```java
+import java.util.HashMap;
+
+public class HandleCollisions {
+    public static void main(String[] args) {
+        HashMap<String, String> dictionary = new HashMap<>();
+        dictionary.put("key1", "value1");
+        dictionary.put("key2", "value2");  // Puede haber una colisión en la tabla hash interna
+
+        // Java maneja las colisiones internamente utilizando encadenamiento o dirección abierta
+        System.out.println(dictionary);
+    }
+}
+```
