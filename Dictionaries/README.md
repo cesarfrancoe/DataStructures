@@ -20,22 +20,22 @@ Los diccionarios son fundamentales en muchos algoritmos y aplicaciones de progra
    **Ejemplo en Python**:
    ```python
    # Create a dictionary
-dictionary = {'key1': 'value1', 'key2': 'value2'}
+   dictionary = {'key1': 'value1', 'key2': 'value2'}
 
-# Add a new key-value pair
-dictionary['key3'] = 'value3'
+   # Add a new key-value pair
+   dictionary['key3'] = 'value3'
 
-# Remove a key-value pair
-del dictionary['key2']
+   # Remove a key-value pair
+   del dictionary['key2']
 
-# Access a value using a key
-print(dictionary['key1'])  # 'value1'
+   # Access a value using a key
+   print(dictionary['key1'])  # 'value1'
 
-# Check if a key exists
-print('key3' in dictionary)  # True
+   # Check if a key exists
+   print('key3' in dictionary)  # True
 
-# Get all values
-print(dictionary.values())  # dict_values(['value1', 'value3'])
+   # Get all values
+   print(dictionary.values())  # dict_values(['value1', 'value3'])
    ```
 
 2. **Diccionarios en Java: `HashMap`**
@@ -46,29 +46,29 @@ print(dictionary.values())  # dict_values(['value1', 'value3'])
    ```java
    import java.util.HashMap;
 
-public class DictionaryExample {
-    public static void main(String[] args) {
-        // Create a dictionary
-        HashMap<String, String> dictionary = new HashMap<>();
-        dictionary.put("key1", "value1");
-        dictionary.put("key2", "value2");
-
-        // Add a new key-value pair
-        dictionary.put("key3", "value3");
-
-        // Remove a key-value pair
-        dictionary.remove("key2");
-
-        // Access a value using a key
-        System.out.println(dictionary.get("key1"));  // 'value1'
-
-        // Check if a key exists
-        System.out.println(dictionary.containsKey("key3"));  // true
-
-        // Get all values
-        System.out.println(dictionary.values());  // [value1, value3]
-    }
-}
+   public class DictionaryExample {
+       public static void main(String[] args) {
+           // Create a dictionary
+           HashMap<String, String> dictionary = new HashMap<>();
+           dictionary.put("key1", "value1");
+           dictionary.put("key2", "value2");
+   
+           // Add a new key-value pair
+           dictionary.put("key3", "value3");
+   
+           // Remove a key-value pair
+           dictionary.remove("key2");
+   
+           // Access a value using a key
+           System.out.println(dictionary.get("key1"));  // 'value1'
+   
+           // Check if a key exists
+           System.out.println(dictionary.containsKey("key3"));  // true
+   
+           // Get all values
+           System.out.println(dictionary.values());  // [value1, value3]
+       }
+   }
    ```
 
 ### **Operaciones Comunes con Diccionarios**
